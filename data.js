@@ -1547,7 +1547,7 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2024-06-04",
                         episodeCount: 8,
                         episodesWatched: 0
@@ -1586,49 +1586,49 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2008-10-03",
                         episodeCount: 22,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 2,
+                        season: 2,
                         releaseDate: "2009-10-02",
                         episodeCount: 22,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 3,
+                        season: 3,
                         releaseDate: "2010-09-17",
                         episodeCount: 22,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 4,
+                        season: 4,
                         releaseDate: "2011-09-16",
                         episodeCount: 22,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 5,
+                        season: 5,
                         releaseDate: "2012-09-29",
                         episodeCount: 20,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 6,
+                        season: 6,
                         releaseDate: "2014-03-07",
                         episodeCount: 13,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 7,
+                        season: 7,
                         releaseDate: "2020-02-21",
                         episodeCount: 12,
                         episodesWatched: 0
@@ -1643,7 +1643,7 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2022-10-26",
                         episodeCount: 6,
                         episodesWatched: 0
@@ -1666,7 +1666,7 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2024-05-04",
                         episodeCount: 6,
                         episodesWatched: 0
@@ -1681,7 +1681,7 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2025-10-29",
                         episodeCount: 6,
                         episodesWatched: 0
@@ -1696,21 +1696,21 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2021-05-04",
                         episodeCount: 16,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 2,
+                        season: 2,
                         releaseDate: "2023-01-04",
                         episodeCount: 16,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 3,
+                        season: 3,
                         releaseDate: "2024-02-21",
                         episodeCount: 15,
                         episodesWatched: 0
@@ -1725,7 +1725,7 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2026-04-06",
                         episodeCount: 10,
                         episodesWatched: 0
@@ -1748,7 +1748,7 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2022",
                         episodeCount: 0,
                         episodesWatched: 0
@@ -1763,14 +1763,14 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2022-09-21",
                         episodeCount: 12,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 2,
+                        season: 2,
                         releaseDate: "2025-04-22",
                         episodeCount: 12,
                         episodesWatched: 0
@@ -1785,28 +1785,28 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2014-10-03",
                         episodeCount: 15,
                         episodesWatched: 0
                     },
                     
                     {
-                        seasonNumber: 2,
+                        season: 2,
                         releaseDate: "2015-06-20",
                         episodeCount: 22,
                         episodesWatched: 0
                     },
                     
                     {
-                        seasonNumber: 3,
+                        season: 3,
                         releaseDate: "2016-09-24",
                         episodeCount: 22,
                         episodesWatched: 0
                     },
                     
                     {
-                        seasonNumber: 4,
+                        season: 4,
                         releaseDate: "2017-10-16",
                         episodeCount: 16,
                         episodesWatched: 0
@@ -1853,21 +1853,21 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2019-11-12",
                         episodeCount: 8,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 2,
+                        season: 2,
                         releaseDate: "2020-10-30",
                         episodeCount: 8,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 3,
+                        season: 3,
                         releaseDate: "2023-03-01",
                         episodeCount: 8,
                         episodesWatched: 0
@@ -1882,7 +1882,7 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2021-12-29",
                         episodeCount: 7,
                         episodesWatched: 0
@@ -1897,7 +1897,7 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2023-08-22",
                         episodeCount: 8,
                         episodesWatched: 0
@@ -1912,7 +1912,7 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2024-12-02",
                         episodeCount: 8,
                         episodesWatched: 0
@@ -1935,14 +1935,14 @@ let collections = [
                 status: Status.NOT_STARTED,
                 seasons: [
                     {
-                        seasonNumber: 1,
+                        season: 1,
                         releaseDate: "2018-10-07",
                         episodeCount: 21,
                         episodesWatched: 0
                     },
 
                     {
-                        seasonNumber: 2,
+                        season: 2,
                         releaseDate: "2019-10-06",
                         episodeCount: 19,
                         episodesWatched: 0
@@ -1960,7 +1960,7 @@ let collections = [
 
             {
                 id: "lastJedi",
-                title: "The Last Jedi (Episode VII)",
+                title: "The Last Jedi (Episode VIII)",
                 releaseDate: "2017-12-15",
                 type: EntryType.MOVIE,
                 status: Status.NOT_STARTED
@@ -2066,7 +2066,7 @@ let collections = [
                 title: "8: All-Stars",
                 type: EntryType.SHOW,
                 releaseDate: "2004-02-01",
-                releaseOrder: 2,
+                releaseOrder: 8,
                 episodeCount: 17,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
