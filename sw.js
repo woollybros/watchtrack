@@ -1,6 +1,6 @@
-const CACHE_NAME = "watchtrack-v1";
+const CACHE_NAME = "watchtrack-cache";
 
-const FILES_TO_CACHE = [
+const APP_FILES = [
     "./",
     "./index.html",
     "./style.css",
@@ -11,16 +11,68 @@ const FILES_TO_CACHE = [
     "./icon-512.png"
 ];
 
-self.addEventListener("install", event => {
+// Save the essential app files for offline use.
+self.addEventListener("install", function (event) {
+    self.skipWaiting();
+
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(FILES_TO_CACHE))
+        caches
+            .open(CACHE_NAME)
+            .then(function (cache) {
+                return cache.addAll(APP_FILES);
+            })
     );
 });
 
-self.addEventListener("fetch", event => {
+// Begin controlling open WatchTrack pages immediately.
+self.addEventListener("activate", function (event) {
+    event.waitUntil(
+        Promise.all([
+            self.clients.claim(),
+
+            // Remove any older WatchTrack caches.
+            caches.keys().then(function (cacheNames) {
+                return Promise.all(
+                    cacheNames
+                        .filter(function (cacheName) {
+                            return cacheName !== CACHE_NAME;
+                        })
+                        .map(function (cacheName) {
+                            return caches.delete(cacheName);
+                        })
+                );
+            })
+        ])
+    );
+});
+
+// Online: use the newest file and update the cache.
+// Offline: fall back to the cached file.
+self.addEventListener("fetch", function (event) {
+    const request = event.request;
+
+    if (
+        request.method !== "GET" ||
+        new URL(request.url).origin !== self.location.origin
+    ) {
+        return;
+    }
+
     event.respondWith(
-        caches.match(event.request)
-            .then(response => response || fetch(event.request))
+        fetch(request)
+            .then(function (networkResponse) {
+                const responseCopy = networkResponse.clone();
+
+                caches
+                    .open(CACHE_NAME)
+                    .then(function (cache) {
+                        cache.put(request, responseCopy);
+                    });
+
+                return networkResponse;
+            })
+            .catch(function () {
+                return caches.match(request);
+            })
     );
 });
