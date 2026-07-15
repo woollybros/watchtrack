@@ -942,7 +942,7 @@ let collections = [
                 title: "Agent Carter - Season 1",
                 releaseDate: "2015-01-06",
                 type: EntryType.SHOW,
-                episodes: 8,
+                episodeCount: 8,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
             },
@@ -952,7 +952,7 @@ let collections = [
                 title: "Agents of S.H.I.E.L.D. - Season 1",
                 releaseDate: "2013-09-24",
                 type: EntryType.SHOW,
-                episodes: 22,
+                episodeCount: 22,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
             },
@@ -962,7 +962,7 @@ let collections = [
                 title: "Agents of S.H.I.E.L.D. - Season 2",
                 releaseDate: "2014-09-23",
                 type: EntryType.SHOW,
-                episodes: 22,
+                episodeCount: 22,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
             },
@@ -972,7 +972,7 @@ let collections = [
                 title: "Agent Carter - Season 2",
                 releaseDate: "2016-01-19",
                 type: EntryType.SHOW,
-                episodes: 10,
+                episodeCount: 10,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
             },
@@ -982,7 +982,7 @@ let collections = [
                 title: "Agents of S.H.I.E.L.D. - Season 3",
                 releaseDate: "2015-09-29",
                 type: EntryType.SHOW,
-                episodes: 22,
+                episodeCount: 22,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
             },
@@ -992,7 +992,7 @@ let collections = [
                 title: "Agents of S.H.I.E.L.D. - Season 4",
                 releaseDate: "2016-09-20",
                 type: EntryType.SHOW,
-                episodes: 22,
+                episodeCount: 22,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
             },
@@ -1002,7 +1002,7 @@ let collections = [
                 title: "Agents of S.H.I.E.L.D. - Season 5",
                 releaseDate: "2017-12-01",
                 type: EntryType.SHOW,
-                episodes: 22,
+                episodeCount: 22,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
             },
@@ -1012,7 +1012,7 @@ let collections = [
                 title: "Agents of S.H.I.E.L.D. - Season 6",
                 releaseDate: "2019-05-10",
                 type: EntryType.SHOW,
-                episodes: 13,
+                episodeCount: 13,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
             },
@@ -1022,7 +1022,7 @@ let collections = [
                 title: "Agents of S.H.I.E.L.D. - Season 7",
                 releaseDate: "2020-05-27",
                 type: EntryType.SHOW,
-                episodes: 13,
+                episodeCount: 13,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
             }
