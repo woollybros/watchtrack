@@ -993,7 +993,22 @@ loadProgress();
 showHomeScreen();
 
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker
-        .register("./sw.js")
-        .then(() => console.log("Service Worker Registered"));
+    window.addEventListener("load", function () {
+        navigator.serviceWorker
+            .register("./sw.js")
+            .then(function (registration) {
+                // Explicitly check for an updated service worker.
+                registration.update();
+
+                console.log(
+                    "WatchTrack service worker registered."
+                );
+            })
+            .catch(function (error) {
+                console.error(
+                    "Service worker registration failed:",
+                    error
+                );
+            });
+    });
 }
