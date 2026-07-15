@@ -1,0 +1,1954 @@
+/* =========================================================
+   WATCHTRACK - CHAOS ARCADE
+   ========================================================= */
+
+:root {
+    --ink: #120b2f;
+
+    --paper: #fff7cf;
+
+    --pink: #ff2fa4;
+    --cyan: #16d9ff;
+    --green: #b7ff00;
+    --yellow: #ffd400;
+    --purple: #7b2cff;
+    --orange: #ff6b00;
+
+    --shadow:
+        8px 8px 0 var(--ink);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+
+    background:
+        linear-gradient(
+            rgba(18,11,47,.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(18,11,47,.08) 1px,
+            transparent 1px
+        ),
+
+        var(--paper);
+
+    background-size:24px 24px;
+
+}
+
+body {
+
+    max-width:760px;
+
+    margin:auto;
+
+    padding:28px;
+
+    color:var(--ink);
+
+    background:
+
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(255,47,164,.30),
+            transparent 20%
+        ),
+
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(22,217,255,.28),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 80% 90%,
+            rgba(183,255,0,.25),
+            transparent 25%
+        );
+
+    font-family:
+        Impact,
+        "Arial Black",
+        sans-serif;
+
+}
+
+/* Giant halftone dots */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.18;
+
+    background-image:
+        radial-gradient(
+            var(--ink) 1.2px,
+            transparent 1.2px
+        );
+
+    background-size:11px 11px;
+
+}
+
+/* =========================================================
+   Typography
+   ========================================================= */
+
+h1{
+
+    text-align:center;
+
+    margin-bottom:0;
+
+    font-size:5rem;
+
+    line-height:.85;
+
+    text-transform:uppercase;
+
+    color:white;
+
+    -webkit-text-stroke:3px var(--ink);
+
+    text-shadow:
+
+        4px 4px 0 var(--pink),
+
+        8px 8px 0 var(--cyan),
+
+        12px 12px 0 var(--ink);
+
+    transform:rotate(-2deg);
+
+}
+
+p{
+
+    text-align:center;
+
+    margin-top:20px;
+
+    margin-bottom:35px;
+
+    color:var(--ink);
+
+    font-weight:bold;
+
+    font-family:
+        Consolas,
+        monospace;
+
+}
+
+h2{
+
+    display:inline-block;
+
+    padding:
+
+        8px 16px;
+
+    margin-top:40px;
+
+    margin-bottom:18px;
+
+    background:var(--ink);
+
+    color:white;
+
+    border:
+
+        4px solid var(--ink);
+
+    box-shadow:
+
+        6px 6px 0 var(--pink);
+
+    text-transform:uppercase;
+
+    transform:
+        skewX(-8deg)
+        rotate(-1deg);
+
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+.collections,
+.categoryButtons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+button{
+
+    position:relative;
+
+    overflow:hidden;
+
+    width:100%;
+
+    padding:18px 22px;
+
+    border:
+
+        4px solid var(--ink);
+
+    border-radius:0;
+
+    background:white;
+
+    color:var(--ink);
+
+    font-family:inherit;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    box-shadow:var(--shadow);
+
+    transform:rotate(-.5deg);
+
+    transition:
+
+        transform .15s,
+
+        box-shadow .15s,
+
+        background .15s;
+
+}
+
+/* every other button leans the other way */
+
+button:nth-child(even){
+
+    transform:rotate(.5deg);
+
+}
+
+/* comic-book hatch overlay */
+
+button::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    background:
+
+        repeating-linear-gradient(
+
+            -45deg,
+
+            transparent 0 10px,
+
+            rgba(18,11,47,.08) 10px 14px
+
+        );
+
+    transition:opacity .15s;
+
+}
+
+button:hover{
+
+    background:var(--yellow);
+
+    transform:
+
+        translate(-4px,-4px)
+
+        rotate(0deg)
+
+        scale(1.02);
+
+    box-shadow:
+
+        12px 12px 0 var(--ink);
+
+}
+
+button:hover::after{
+
+    opacity:1;
+
+}
+
+button:active{
+
+    transform:
+
+        translate(5px,5px)
+
+        rotate(0deg);
+
+    box-shadow:
+
+        2px 2px 0 var(--ink);
+
+}
+
+button:focus-visible{
+
+    outline:
+
+        6px solid var(--cyan);
+
+    outline-offset:5px;
+
+}
+
+
+/* =========================================================
+   Back Button
+   ========================================================= */
+
+#backButton{
+
+    width:auto;
+
+    margin-bottom:24px;
+
+    padding:
+
+        10px 16px;
+
+    background:var(--purple);
+
+    color:white;
+
+    border:
+
+        4px solid var(--ink);
+
+    box-shadow:
+
+        5px 5px 0 var(--ink);
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+}
+
+#backButton::before{
+
+    content:"↯ ";
+
+}
+
+#backButton:hover{
+
+    background:var(--green);
+
+    color:var(--ink);
+
+    transform:
+
+        translate(-2px,-2px)
+
+        rotate(-2deg);
+
+}
+
+
+/* =========================================================
+   Category Buttons
+   ========================================================= */
+
+.categoryButtons{
+
+    perspective:1000px;
+
+}
+
+.categoryButton{
+
+    display:grid;
+
+    grid-template-columns:
+
+        70px
+
+        1fr
+
+        auto;
+
+    align-items:center;
+
+    gap:18px;
+
+    min-height:95px;
+
+    padding:16px 22px;
+
+}
+
+/* WATCH */
+
+.categoryButton:nth-child(1){
+
+    background:
+
+        linear-gradient(
+
+            120deg,
+
+            #7ee7ff,
+
+            #d8fbff
+
+        );
+
+}
+
+/* READ */
+
+.categoryButton:nth-child(2){
+
+    background:
+
+        linear-gradient(
+
+            120deg,
+
+            #c9ff74,
+
+            #f4ffd7
+
+        );
+
+}
+
+/* PLAY */
+
+.categoryButton:nth-child(3){
+
+    background:
+
+        linear-gradient(
+
+            120deg,
+
+            #ff7bc6,
+
+            #ffe0f2
+
+        );
+
+}
+
+.categoryButton:hover{
+
+    transform:
+
+        translate(-6px,-6px)
+
+        scale(1.03);
+
+}
+
+.categoryIcon{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    background:var(--ink);
+
+    color:white;
+
+    border:
+
+        4px solid white;
+
+    outline:
+
+        4px solid var(--ink);
+
+    box-shadow:
+
+        4px 4px 0 var(--pink);
+
+}
+
+.categoryIcon svg{
+
+    width:28px;
+
+    height:28px;
+
+    fill:none;
+
+    stroke:currentColor;
+
+    stroke-width:2;
+
+}
+
+.watchIcon svg{
+
+    fill:currentColor;
+
+    stroke:none;
+
+}
+
+.categoryLabel{
+
+    font-size:2rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:-.04em;
+
+}
+
+.categoryArrow{
+
+    font-size:2.4rem;
+
+    animation:
+
+        bounceArrow
+
+        1.2s
+
+        infinite;
+
+}
+
+
+/* =========================================================
+   Animations
+   ========================================================= */
+
+@keyframes bounceArrow{
+
+    0%{
+
+        transform:translateX(0);
+
+    }
+
+    50%{
+
+        transform:translateX(8px);
+
+    }
+
+    100%{
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* =========================================================
+   Collection Cards
+   ========================================================= */
+
+.collectionButton{
+
+    background:white;
+
+    border:
+
+        6px solid transparent;
+
+    background:
+
+        linear-gradient(
+
+            white,
+
+            white
+
+        ) padding-box,
+
+        repeating-linear-gradient(
+
+            45deg,
+
+            var(--pink) 0 12px,
+
+            var(--yellow) 12px 24px,
+
+            var(--cyan) 24px 36px
+
+        ) border-box;
+
+}
+
+.collectionButton:nth-child(even){
+
+    background:
+
+        linear-gradient(
+
+            white,
+
+            white
+
+        ) padding-box,
+
+        repeating-linear-gradient(
+
+            45deg,
+
+            var(--green) 0 12px,
+
+            var(--purple) 12px 24px,
+
+            var(--orange) 24px 36px
+
+        ) border-box;
+
+}
+
+.collectionButtonHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:12px;
+
+}
+
+.collectionButtonHeader span:last-child{
+
+    padding:
+
+        5px 10px;
+
+    background:var(--ink);
+
+    color:white;
+
+    border:
+
+        3px solid var(--ink);
+
+    box-shadow:
+
+        3px 3px 0 var(--pink);
+
+    font-family:
+
+        Consolas,
+
+        monospace;
+
+}
+
+
+/* =========================================================
+   Progress Bars
+   ========================================================= */
+
+.progressSummary{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    padding:
+
+        8px 14px;
+
+    background:var(--ink);
+
+    color:white;
+
+    border:
+
+        4px solid var(--ink);
+
+    box-shadow:
+
+        5px 5px 0 var(--cyan);
+
+    font-family:
+
+        Consolas,
+
+        monospace;
+
+    text-transform:uppercase;
+
+}
+
+.progress{
+
+    height:18px;
+
+    margin:
+
+        14px 0 24px;
+
+    overflow:hidden;
+
+    background:white;
+
+    border:
+
+        4px solid var(--ink);
+
+    box-shadow:
+
+        5px 5px 0 var(--ink);
+
+}
+
+.progressFill{
+
+    height:100%;
+
+    background:
+
+        repeating-linear-gradient(
+
+            -45deg,
+
+            var(--pink) 0 10px,
+
+            var(--yellow) 10px 20px,
+
+            var(--cyan) 20px 30px,
+
+            var(--green) 30px 40px
+
+        );
+
+    animation:
+
+        progressMove
+
+        2s
+
+        linear
+
+        infinite;
+
+}
+
+@keyframes progressMove{
+
+    from{
+
+        background-position:0 0;
+
+    }
+
+    to{
+
+        background-position:80px 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   Entry Buttons
+   ========================================================= */
+
+.entryButton{
+
+    padding-left:28px;
+
+    background:white;
+
+}
+
+/* thick comic status stripe */
+
+.entryButton::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    bottom:0;
+
+    width:12px;
+
+    background:var(--ink);
+
+}
+
+.entryButton.notStarted::before{
+
+    background:#999;
+
+}
+
+.entryButton.inProgress::before{
+
+    background:var(--yellow);
+
+}
+
+.entryButton.completed::before{
+
+    background:var(--green);
+
+}
+
+.entryButton.skipped::before{
+
+    background:#ff304f;
+
+}
+
+
+/* In Progress */
+
+.entryButton.inProgress{
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            rgba(255,212,0,.20),
+
+            transparent 35%
+
+        ),
+
+        white;
+
+}
+
+
+/* Completed */
+
+.entryButton.completed{
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            rgba(183,255,0,.25),
+
+            transparent 35%
+
+        ),
+
+        white;
+
+    color:var(--ink);
+
+    opacity:1;
+
+}
+
+.entryButton.completed::after{
+
+    content:"DONE!";
+
+    position:absolute;
+
+    top:8px;
+
+    right:46px;
+
+    padding:
+
+        4px 8px;
+
+    background:var(--green);
+
+    color:var(--ink);
+
+    border:
+
+        3px solid var(--ink);
+
+    transform:
+
+        rotate(8deg);
+
+    font-size:.65rem;
+
+    font-weight:900;
+
+    font-family:
+
+        Consolas,
+
+        monospace;
+
+}
+
+
+/* Skipped */
+
+.entryButton.skipped{
+
+    background:
+
+        repeating-linear-gradient(
+
+            135deg,
+
+            rgba(255,48,79,.18) 0 10px,
+
+            transparent 10px 20px
+
+        ),
+
+        white;
+
+    color:var(--ink);
+
+    opacity:1;
+
+}
+
+.entryButton.skipped::after{
+
+    content:"SKIP";
+
+    position:absolute;
+
+    top:8px;
+
+    right:46px;
+
+    padding:
+
+        4px 8px;
+
+    background:#ff304f;
+
+    color:white;
+
+    border:
+
+        3px solid var(--ink);
+
+    transform:
+
+        rotate(-8deg);
+
+    font-size:.65rem;
+
+    font-weight:900;
+
+    font-family:
+
+        Consolas,
+
+        monospace;
+
+}
+
+
+/* Continue Cards */
+
+.continueCardHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.continueCardHeader strong{
+
+    font-size:1rem;
+
+    color:var(--ink);
+
+}
+
+.continueMeta{
+
+    display:flex;
+
+    gap:8px;
+
+    margin-top:8px;
+
+    flex-wrap:wrap;
+
+}
+
+.continueArrow{
+
+    font-size:2.5rem;
+
+    animation:
+
+        bounceArrow
+
+        1.2s
+
+        infinite;
+
+}
+
+/* =========================================================
+   Entry Details
+   ========================================================= */
+
+.entryDetails{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:26px;
+
+    background:white;
+
+    border:
+
+        6px solid var(--ink);
+
+    box-shadow:
+
+        10px 10px 0 var(--pink),
+
+        18px 18px 0 var(--cyan);
+
+    transform:
+
+        rotate(-.4deg);
+
+}
+
+/* comic label attached to the card */
+
+.entryDetails::before{
+
+    content:"DETAIL FILE";
+
+    position:absolute;
+
+    top:-18px;
+
+    right:18px;
+
+    padding:
+
+        6px 11px;
+
+    background:var(--purple);
+
+    color:white;
+
+    border:
+
+        4px solid var(--ink);
+
+    box-shadow:
+
+        3px 3px 0 var(--ink);
+
+    font-family:
+
+        Consolas,
+
+        monospace;
+
+    font-size:.7rem;
+
+    font-weight:900;
+
+    letter-spacing:.12em;
+
+    transform:
+
+        rotate(4deg);
+
+}
+
+.entryType{
+
+    width:fit-content;
+
+    margin:0;
+
+    padding:
+
+        6px 10px;
+
+    background:var(--pink);
+
+    color:white;
+
+    border:
+
+        3px solid var(--ink);
+
+    box-shadow:
+
+        3px 3px 0 var(--ink);
+
+    font-size:.75rem;
+
+    font-weight:900;
+
+    letter-spacing:.14em;
+
+    text-transform:uppercase;
+
+}
+
+.entryDetails h2{
+
+    margin:0;
+
+    font-size:
+
+        clamp(
+
+            2rem,
+
+            8vw,
+
+            4rem
+
+        );
+
+    line-height:.95;
+
+    letter-spacing:-.05em;
+
+    text-transform:uppercase;
+
+}
+
+.entryDetails h3{
+
+    width:fit-content;
+
+    margin:
+
+        14px 0 0;
+
+    padding:
+
+        6px 10px;
+
+    background:var(--yellow);
+
+    color:var(--ink);
+
+    border:
+
+        3px solid var(--ink);
+
+    box-shadow:
+
+        3px 3px 0 var(--ink);
+
+    text-transform:uppercase;
+
+    transform:
+
+        rotate(-1deg);
+
+}
+
+
+/* =========================================================
+   Entry Metadata
+   ========================================================= */
+
+.entryMeta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.entryMeta span{
+
+    padding:
+
+        7px 12px;
+
+    background:var(--cyan);
+
+    color:var(--ink);
+
+    border:
+
+        3px solid var(--ink);
+
+    box-shadow:
+
+        3px 3px 0 var(--ink);
+
+    font-family:
+
+        Consolas,
+
+        monospace;
+
+    font-size:.82rem;
+
+    font-weight:900;
+
+}
+
+.entryMeta span:nth-child(even){
+
+    background:var(--green);
+
+    transform:
+
+        rotate(2deg);
+
+}
+
+
+/* =========================================================
+   Status Buttons
+   ========================================================= */
+
+.statusOptions{
+
+    display:grid;
+
+    grid-template-columns:
+
+        1fr
+
+        1fr;
+
+    gap:14px;
+
+}
+
+.statusButton{
+
+    padding:
+
+        15px 10px;
+
+    background:var(--paper);
+
+    color:var(--ink);
+
+    border:
+
+        4px solid var(--ink);
+
+    box-shadow:
+
+        5px 5px 0 var(--ink);
+
+    text-align:center;
+
+    text-transform:uppercase;
+
+    font-size:.8rem;
+
+}
+
+.statusButton.selected{
+
+    transform:
+
+        translate(
+
+            4px,
+
+            4px
+
+        );
+
+    box-shadow:
+
+        1px 1px 0 var(--ink);
+
+}
+
+.statusButton.selected[
+    data-status="notStarted"
+]{
+
+    background:#bdbdbd;
+
+}
+
+.statusButton.selected[
+    data-status="inProgress"
+]{
+
+    background:var(--yellow);
+
+}
+
+.statusButton.selected[
+    data-status="completed"
+]{
+
+    background:var(--green);
+
+}
+
+.statusButton.selected[
+    data-status="skipped"
+]{
+
+    background:#ff304f;
+
+    color:white;
+
+}
+
+
+/* =========================================================
+   Episode Controls
+   ========================================================= */
+
+.episodeTracker{
+
+    margin-top:6px;
+
+}
+
+.episodeControls{
+
+    display:grid;
+
+    grid-template-columns:
+
+        62px
+
+        1fr
+
+        62px;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.episodeControls button{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:62px;
+
+    padding:0;
+
+    background:var(--purple);
+
+    color:white;
+
+    font-size:2rem;
+
+    text-align:center;
+
+}
+
+.episodeControls button:last-child{
+
+    background:var(--pink);
+
+}
+
+.episodeControls span{
+
+    padding:
+
+        13px 10px;
+
+    background:var(--ink);
+
+    color:white;
+
+    border:
+
+        4px solid var(--ink);
+
+    box-shadow:
+
+        5px 5px 0 var(--cyan);
+
+    text-align:center;
+
+    font-family:
+
+        Consolas,
+
+        monospace;
+
+    font-size:1.2rem;
+
+    font-weight:900;
+
+}
+
+
+/* =========================================================
+   Type Badges
+   ========================================================= */
+
+.typeBadge,
+.typeTag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:
+
+        4px 8px;
+
+    background:var(--ink);
+
+    color:white;
+
+    border:
+
+        3px solid var(--ink);
+
+    box-shadow:
+
+        2px 2px 0 var(--yellow);
+
+    font-family:
+
+        Consolas,
+
+        monospace;
+
+    font-size:.68rem;
+
+    font-weight:900;
+
+    letter-spacing:.1em;
+
+    text-transform:uppercase;
+
+}
+
+.typeBadge.movie,
+.typeTag.movie{
+
+    background:#ff304f;
+
+}
+
+.typeBadge.tv,
+.typeTag.tv{
+
+    background:var(--cyan);
+
+    color:var(--ink);
+
+}
+
+.typeBadge.book,
+.typeTag.book{
+
+    background:var(--green);
+
+    color:var(--ink);
+
+}
+
+.typeBadge.game,
+.typeTag.game{
+
+    background:var(--purple);
+
+}
+
+.typeBadge.short,
+.typeTag.short{
+
+    background:var(--orange);
+
+}
+
+.continueCollection,
+.collectionName{
+
+    color:var(--ink);
+
+    font-family:
+
+        Consolas,
+
+        monospace;
+
+    font-size:.82rem;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+}
+
+
+/* =========================================================
+   Small Category Icons
+   ========================================================= */
+
+.collectionTitleWithIcon{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.smallCategoryIcon{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:32px;
+
+    height:32px;
+
+    background:var(--ink);
+
+    color:white;
+
+    border:
+
+        3px solid var(--ink);
+
+    border-radius:50%;
+
+    box-shadow:
+
+        3px 3px 0 var(--pink);
+
+}
+
+.smallCategoryIcon svg{
+
+    width:17px;
+
+    height:17px;
+
+    fill:none;
+
+    stroke:currentColor;
+
+    stroke-width:2;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+
+}
+
+.smallCategoryIcon.watchIcon svg{
+
+    fill:currentColor;
+
+    stroke:none;
+
+}
+
+
+/* =========================================================
+   Profile Switcher
+   ========================================================= */
+
+.profileSwitcher{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(
+
+            3,
+
+            1fr
+
+        );
+
+    gap:0;
+
+    margin-bottom:38px;
+
+    background:var(--ink);
+
+    border:
+
+        5px solid var(--ink);
+
+    box-shadow:
+
+        9px 9px 0 var(--pink);
+
+    transform:
+
+        rotate(.6deg);
+
+}
+
+.profileButton{
+
+    margin:0;
+
+    padding:
+
+        14px 8px;
+
+    background:var(--ink);
+
+    color:white;
+
+    border:0;
+
+    border-right:
+
+        3px solid white;
+
+    box-shadow:none;
+
+    text-align:center;
+
+    text-transform:uppercase;
+
+    transform:none;
+
+}
+
+.profileButton:last-child{
+
+    border-right:0;
+
+}
+
+.profileButton:hover{
+
+    background:var(--cyan);
+
+    color:var(--ink);
+
+    transform:none;
+
+    box-shadow:
+
+        inset
+
+        0
+
+        -8px
+
+        0
+
+        var(--pink);
+
+}
+
+.profileButton.active{
+
+    background:var(--green);
+
+    color:var(--ink);
+
+    box-shadow:
+
+        inset
+
+        0
+
+        -8px
+
+        0
+
+        var(--yellow);
+
+}
+
+
+/* =========================================================
+   Empty Message
+   ========================================================= */
+
+.emptyMessage{
+
+    margin:
+
+        0 0 20px;
+
+    padding:18px;
+
+    background:var(--yellow);
+
+    color:var(--ink);
+
+    border:
+
+        4px dashed var(--ink);
+
+    box-shadow:
+
+        5px 5px 0 var(--ink);
+
+    text-align:left;
+
+    font-family:
+
+        Consolas,
+
+        monospace;
+
+    font-weight:900;
+
+    transform:
+
+        rotate(-1deg);
+
+}
+
+
+/* =========================================================
+   Scrollbar
+   ========================================================= */
+
+::-webkit-scrollbar{
+
+    width:14px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:var(--paper);
+
+    border-left:
+
+        3px solid var(--ink);
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:
+
+        repeating-linear-gradient(
+
+            45deg,
+
+            var(--pink) 0 8px,
+
+            var(--cyan) 8px 16px
+
+        );
+
+    border:
+
+        3px solid var(--ink);
+
+}
+
+
+/* =========================================================
+   Mobile Adjustments
+   ========================================================= */
+
+@media (
+
+    max-width:600px
+
+){
+
+    body{
+
+        padding:18px;
+
+    }
+
+    h1{
+
+        font-size:
+
+            clamp(
+
+                3rem,
+
+                17vw,
+
+                5rem
+
+            );
+
+        -webkit-text-stroke-width:2px;
+
+        text-shadow:
+
+            3px 3px 0 var(--pink),
+
+            6px 6px 0 var(--cyan),
+
+            9px 9px 0 var(--ink);
+
+    }
+
+    .categoryButton{
+
+        grid-template-columns:
+
+            58px
+
+            1fr
+
+            auto;
+
+        min-height:82px;
+
+        padding:
+
+            12px 15px;
+
+    }
+
+    .categoryIcon{
+
+        width:48px;
+
+        height:48px;
+
+    }
+
+    .categoryIcon svg{
+
+        width:24px;
+
+        height:24px;
+
+    }
+
+    .entryDetails{
+
+        padding:20px;
+
+        box-shadow:
+
+            7px 7px 0 var(--pink),
+
+            13px 13px 0 var(--cyan);
+
+    }
+
+    .statusOptions{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .entryButton.completed::after,
+    .entryButton.skipped::after{
+
+        display:none;
+
+    }
+
+}
+
+
+/* =========================================================
+   Reduced Motion
+   ========================================================= */
+
+@media (
+
+    prefers-reduced-motion:reduce
+
+){
+
+    *,
+    *::before,
+    *::after{
+
+        animation-duration:.001ms !important;
+
+        animation-iteration-count:1 !important;
+
+        transition-duration:.001ms !important;
+
+    }
+
+}

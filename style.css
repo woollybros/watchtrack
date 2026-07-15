@@ -1,0 +1,682 @@
+/* =========================================================
+   WatchTrack
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    color: #f5f5f5;
+
+    margin: 0;
+    padding: 25px;
+
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   Headings
+   ========================================================= */
+
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 5px;
+}
+
+p {
+    text-align: center;
+    color: #9c9c9c;
+    margin-top: 0;
+    margin-bottom: 35px;
+}
+
+h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   Lists
+   ========================================================= */
+
+.collections {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+button {
+
+    width: 100%;
+
+    padding: 18px 20px;
+
+    border: none;
+    border-radius: 14px;
+
+    background-color: #1e1e1e;
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background-color .18s,
+        transform .12s,
+        box-shadow .18s;
+}
+
+
+/* Mouse Hover */
+
+button:hover {
+
+    background-color: #2b2b2b;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.35);
+
+}
+
+
+/* While Clicking */
+
+button:active {
+
+    transform: scale(.98);
+
+}
+
+
+/* Keyboard navigation */
+
+button:focus-visible {
+
+    outline: 3px solid #4da3ff;
+
+}
+
+
+/* =========================================================
+   Back Button
+   ========================================================= */
+
+#backButton {
+
+    width: auto;
+
+    margin-bottom: 25px;
+
+    background: none;
+
+    color: #4da3ff;
+
+    font-size: 1rem;
+
+    padding: 0;
+
+    box-shadow: none;
+
+}
+
+#backButton:hover {
+
+    background: none;
+
+    transform: translateX(-4px);
+
+}
+
+/* =========================================================
+   Scrollbar (Desktop)
+   ========================================================= */
+
+::-webkit-scrollbar {
+
+    width: 10px;
+
+}
+
+::-webkit-scrollbar-track {
+
+    background: #151515;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: #3a3a3a;
+
+    border-radius: 20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #4d4d4d;
+
+}
+
+
+/* =========================================================
+   Phone Tweaks
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding: 18px;
+
+    }
+
+    h1 {
+
+        font-size: 2.2rem;
+
+    }
+
+}
+
+.entryButton.notStarted {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+
+    border: 1px solid #353535;
+    border-left: 5px solid #4a4a4a;
+}
+
+.entryButton.notStarted:hover {
+    background-color: #262626;
+    border-color: #4a4a4a;
+}
+
+.entryButton.inProgress {
+    position: relative;
+    overflow: hidden;
+
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+
+    border: 1px solid #353535;
+    border-left: 5px solid #c99200;
+
+    text-decoration: none;
+}
+
+.entryButton.inProgress:hover {
+    background-color: #252525;
+    border-color: #4a4a4a;
+    border-left-color: #e0aa16;
+}
+
+.entryButton.completed {
+    background-color: #1e1e1e;
+    opacity: .75;
+    color: #b8d9c0;
+
+    border-left: 5px solid #2ea043;
+}
+
+.entryButton.skipped {
+    background-color: #1e1e1e;
+    color: #ffd6d6;
+    opacity: 0.85;
+
+    border-left: 5px solid #c23b3b;
+}
+
+.entryButton.completed:hover {
+    background-color: #205037;
+}
+
+.progressSummary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: #a8a8a8;
+    font-size: 0.9rem;
+}
+
+.progress {
+    height: 10px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    background-color: #2a2a2a;
+    border-radius: 999px;
+}
+
+.progressFill {
+    height: 100%;
+    background-color: #2f6fed;
+    border-radius: inherit;
+    transition: width 0.25s ease;
+}
+
+.collectionButtonHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
+}
+
+.collectionProgressText {
+    margin-top: 8px;
+    color: #9c9c9c;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.collectionButton .progress,
+button .progress {
+    margin-bottom: 0;
+}
+
+.entryDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.entryType {
+    margin: 0;
+    color: #4da3ff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.entryDetails h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.entryDetails h3 {
+    margin: 16px 0 0;
+    font-size: 1rem;
+}
+
+.entryMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.entryMeta span {
+    padding: 6px 10px;
+    background-color: #252525;
+    border-radius: 999px;
+    color: #b8b8b8;
+    font-size: 0.85rem;
+}
+
+.statusOptions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.statusButton {
+    margin: 0;
+    text-align: center;
+    background-color: #252525;
+}
+
+.statusButton.selected {
+    color: white;
+}
+
+.statusButton.selected[data-status="notStarted"] {
+    background-color: #3a3a3a;
+}
+
+.statusButton.selected[data-status="inProgress"] {
+    background-color: #c99200;
+}
+
+.statusButton.selected[data-status="completed"] {
+    background-color: #1f6f46;
+}
+
+.statusButton.selected[data-status="skipped"] {
+    background-color: #8b1e1e;
+}
+
+.homeButtonSubtitle {
+    display: block;
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.emptyMessage {
+    margin: 0 0 20px;
+    padding: 16px;
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    color: #999;
+    text-align: left;
+}
+
+.episodeTracker {
+    margin-top: 8px;
+}
+
+.episodeTracker h3 {
+    margin-bottom: 10px;
+}
+
+.episodeControls {
+    display: grid;
+    grid-template-columns: 56px 1fr 56px;
+    align-items: center;
+    gap: 12px;
+}
+
+.episodeControls button {
+    margin: 0;
+    padding: 12px;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.episodeControls span {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.typeTag {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.typeTag.movie {
+    color: #ff6b6b;
+}
+
+.typeTag.tv {
+    color: #69b8ff;
+}
+
+.typeTag.book {
+    color: #67d38d;
+}
+
+.typeTag.game {
+    color: #b98cff;
+}
+
+.typeTag.short {
+    color: #ffb85c;
+}
+
+.typeTag{
+    font-size:.72rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+}
+
+.collectionName{
+    color:#d0d0d0;
+    font-size:.85rem;
+    margin-top:2px;
+}
+
+.categoryButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.categoryButton {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: 16px;
+
+    min-height: 82px;
+    margin: 0;
+    padding: 14px 20px;
+
+    background-color: #1e1e1e;
+    border: 1px solid #344054;
+    border-radius: 18px;
+
+    text-align: left;
+}
+
+.categoryButton:hover {
+    background-color: #252525;
+    border-color: #4da3ff;
+}
+
+.categoryIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+}
+
+.categoryIcon svg {
+    width: 26px;
+    height: 26px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.watchIcon svg {
+    fill: currentColor;
+    stroke: none;
+}
+
+.watchIcon {
+    background-color: #173c73;
+    color: #8fc5ff;
+}
+
+.readIcon {
+    background-color: #164b35;
+    color: #6ee7a8;
+}
+
+.playIcon {
+    background-color: #3c285e;
+    color: #c19cff;
+}
+
+.categoryLabel {
+    color: #f5f5f5;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.categoryArrow {
+    color: #e7e7e7;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.categoryButton:active {
+    transform: scale(0.985);
+}
+
+.continueCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.continueCardHeader strong {
+    display: block;
+    color: #f5f5f5;
+    font-size: 1rem;
+}
+
+.continueMeta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 8px;
+}
+
+.typeBadge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 3px 7px;
+
+    border: 1px solid currentColor;
+    border-radius: 6px;
+
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.typeBadge.movie {
+    color: #ff7777;
+}
+
+.typeBadge.tv {
+    color: #6dbaff;
+}
+
+.typeBadge.book {
+    color: #6fdd98;
+}
+
+.typeBadge.game {
+    color: #c19aff;
+}
+
+.typeBadge.short {
+    color: #ffc36b;
+}
+
+.continueCollection {
+    color: #aaa;
+    font-size: 0.82rem;
+    font-weight: 400;
+}
+
+.continueArrow {
+    flex-shrink: 0;
+
+    color: #aaa;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.collectionTitleWithIcon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.smallCategoryIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+}
+
+.smallCategoryIcon svg {
+    width: 15px;
+    height: 15px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.smallCategoryIcon.watchIcon svg {
+    fill: currentColor;
+    stroke: none;
+}
+
+.profileSwitcher {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 4px;
+
+    margin-bottom: 30px;
+    padding: 4px;
+
+    background-color: #1a1a1a;
+    border: 1px solid #353535;
+    border-radius: 14px;
+}
+
+.profileButton {
+    margin: 0;
+    padding: 11px 16px;
+
+    background-color: transparent;
+    color: #999;
+
+    border-radius: 10px;
+
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.profileButton:hover {
+    background-color: #252525;
+    transform: none;
+    box-shadow: none;
+}
+
+.profileButton.active {
+    background-color: #2f6fed;
+    color: white;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
