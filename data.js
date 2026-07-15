@@ -1026,6 +1026,508 @@ let collections = [
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
             }
+
+            // =====================================================
+            // Marvel Television: Defenders Saga
+            // =====================================================
+            
+            {
+                id: "daredevil",
+                title: "Daredevil",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2015-04-10",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2016-03-18",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 3,
+                        releaseDate: "2018-10-19",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "jessicaJones",
+                title: "Jessica Jones",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2015-11-20",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2018-03-08",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 3,
+                        releaseDate: "2019-06-14",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "lukeCage",
+                title: "Luke Cage",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2016-09-30",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2018-06-22",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "ironFist",
+                title: "Iron Fist",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2017-03-17",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2018-09-07",
+                        episodeCount: 10,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "defenders",
+                title: "The Defenders",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2017-08-18",
+                        episodeCount: 8,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "punisher",
+                title: "The Punisher",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2017-11-17",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2019-01-18",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            // =====================================================
+            // Other Marvel Television
+            // =====================================================
+            
+            {
+                id: "inhumans",
+                title: "Inhumans",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2017-09-29",
+                        episodeCount: 8,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "runaways",
+                title: "Runaways",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2017-11-21",
+                        episodeCount: 10,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2018-12-21",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 3,
+                        releaseDate: "2019-12-13",
+                        episodeCount: 10,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "cloakAndDagger",
+                title: "Cloak & Dagger",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2018-06-07",
+                        episodeCount: 10,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2019-04-04",
+                        episodeCount: 10,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "helstrom",
+                title: "Helstrom",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2020-10-16",
+                        episodeCount: 10,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+
+            // =====================================================
+            // Fox X-Men Movie Universe
+            // =====================================================
+            
+            {
+                id: "xMen2000",
+                title: "X-Men",
+                type: EntryType.MOVIE,
+                releaseDate: "2000-07-14",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "xMen2",
+                title: "X2: X-Men United",
+                type: EntryType.MOVIE,
+                releaseDate: "2003-05-02",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "xMenLastStand",
+                title: "X-Men: The Last Stand",
+                type: EntryType.MOVIE,
+                releaseDate: "2006-05-26",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "wolverineOrigins",
+                title: "X-Men Origins: Wolverine",
+                type: EntryType.MOVIE,
+                releaseDate: "2009-05-01",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "xMenFirstClass",
+                title: "X-Men: First Class",
+                type: EntryType.MOVIE,
+                releaseDate: "2011-06-03",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "theWolverine",
+                title: "The Wolverine",
+                type: EntryType.MOVIE,
+                releaseDate: "2013-07-26",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "xMenDaysOfFuturePast",
+                title: "X-Men: Days of Future Past",
+                type: EntryType.MOVIE,
+                releaseDate: "2014-05-23",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "deadpool1",
+                title: "Deadpool",
+                type: EntryType.MOVIE,
+                releaseDate: "2016-02-12",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "xMenApocalypse",
+                title: "X-Men: Apocalypse",
+                type: EntryType.MOVIE,
+                releaseDate: "2016-05-27",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "logan",
+                title: "Logan",
+                type: EntryType.MOVIE,
+                releaseDate: "2017-03-03",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "deadpool2",
+                title: "Deadpool 2",
+                type: EntryType.MOVIE,
+                releaseDate: "2018-05-18",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "onceUponADeadpool",
+                title: "Once Upon a Deadpool",
+                type: EntryType.MOVIE,
+                releaseDate: "2018-12-12",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "xMenDarkPhoenix",
+                title: "Dark Phoenix",
+                type: EntryType.MOVIE,
+                releaseDate: "2019-06-07",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "newMutants",
+                title: "The New Mutants",
+                type: EntryType.MOVIE,
+                releaseDate: "2020-08-28",
+                status: Status.NOT_STARTED
+            },
+
+            // =====================================================
+            // X-Men Television and Animation
+            // =====================================================
+            
+            {
+                id: "prydeOfTheXMen",
+                title: "Pryde of the X-Men",
+                type: EntryType.SHORT,
+                releaseDate: "1989-09-16",
+                status: Status.NOT_STARTED
+            },
+            
+            {
+                id: "xMenAnimatedSeries",
+                title: "X-Men: The Animated Series",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "1992-10-31",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "1993-10-23",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 3,
+                        releaseDate: "1994-07-29",
+                        episodeCount: 19,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 4,
+                        releaseDate: "1995-09-09",
+                        episodeCount: 17,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 5,
+                        releaseDate: "1996-09-07",
+                        episodeCount: 14,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "xMenEvolution",
+                title: "X-Men: Evolution",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2000-11-04",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2001-09-29",
+                        episodeCount: 17,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 3,
+                        releaseDate: "2002-09-14",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 4,
+                        releaseDate: "2003-08-30",
+                        episodeCount: 9,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "wolverineAndTheXMen",
+                title: "Wolverine and the X-Men",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2009-01-23",
+                        episodeCount: 26,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "legion",
+                title: "Legion",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2017-02-08",
+                        episodeCount: 8,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2018-04-03",
+                        episodeCount: 11,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 3,
+                        releaseDate: "2019-06-24",
+                        episodeCount: 8,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "theGifted",
+                title: "The Gifted",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2017-10-02",
+                        episodeCount: 13,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2018-09-25",
+                        episodeCount: 16,
+                        episodesWatched: 0
+                    }
+                ]
+            },
+            
+            {
+                id: "xMen97",
+                title: "X-Men '97",
+                type: EntryType.SHOW,
+                status: Status.NOT_STARTED,
+                seasons: [
+                    {
+                        season: 1,
+                        releaseDate: "2024-03-20",
+                        episodeCount: 10,
+                        episodesWatched: 0
+                    },
+                    {
+                        season: 2,
+                        releaseDate: "2026-07-01",
+                        episodeCount: 9,
+                        episodesWatched: 0
+                    }
+                ]
+            }
         ]
     },
 
