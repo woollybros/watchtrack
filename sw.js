@@ -1,4 +1,4 @@
-const CACHE_NAME = "watchtrack-cache";
+const CACHE_NAME = "chronicle-cache";
 
 const APP_FILES = [
     "./",
