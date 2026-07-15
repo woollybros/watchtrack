@@ -991,3 +991,9 @@ if (oldProgress && !brettProgress) {
 
 loadProgress();
 showHomeScreen();
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+        .register("./sw.js")
+        .then(() => console.log("Service Worker Registered"));
+}
