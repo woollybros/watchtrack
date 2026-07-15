@@ -1,6 +1,6 @@
 {
-    "name": "WatchTrack",
-    "short_name": "WatchTrack",
+    "name": "Chronicle",
+    "short_name": "Chronicle",
     "description": "Personal movie, show, book, and game tracker",
     "start_url": "./",
     "scope": "./",
