@@ -1025,7 +1025,7 @@ let collections = [
                 episodeCount: 13,
                 episodesWatched: 0,
                 status: Status.NOT_STARTED
-            }
+            },
 
             // =====================================================
             // Marvel Television: Defenders Saga
