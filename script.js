@@ -993,22 +993,24 @@ loadProgress();
 showHomeScreen();
 
 if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function () {
-        navigator.serviceWorker
-            .register("./sw.js")
-            .then(function (registration) {
-                // Explicitly check for an updated service worker.
-                registration.update();
+    window.addEventListener("load", async function () {
+        const registrations =
+            await navigator.serviceWorker.getRegistrations();
 
-                console.log(
-                    "WatchTrack service worker registered."
-                );
+        for (const registration of registrations) {
+            await registration.unregister();
+        }
+
+        const cacheNames = await caches.keys();
+
+        await Promise.all(
+            cacheNames.map(function (cacheName) {
+                return caches.delete(cacheName);
             })
-            .catch(function (error) {
-                console.error(
-                    "Service worker registration failed:",
-                    error
-                );
-            });
+        );
+
+        console.log(
+            "Old service worker and app caches removed."
+        );
     });
 }
