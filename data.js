@@ -5060,6 +5060,266 @@ let collections = [
                 status: Status.NOT_STARTED
             }
         ]
+    },
+
+    {
+        id: "wheelOfTime",
+        title: "The Wheel of Time",
+        category: "read",
+        profiles: [
+            profiles.BRETT
+        ],
+        entries: [
+            {
+                id: "wot01",
+                title: "The Eye of the World",
+                releaseDate: "1990-01-15",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot02",
+                title: "The Great Hunt",
+                releaseDate: "1990-11-15",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot03",
+                title: "The Dragon Reborn",
+                releaseDate: "1991-10-15",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot04",
+                title: "The Shadow Rising",
+                releaseDate: "1992-09-15",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot05",
+                title: "The Fires of Heaven",
+                releaseDate: "1993-10-15",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot06",
+                title: "Lord of Chaos",
+                releaseDate: "1994-10-15",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot07",
+                title: "A Crown of Swords",
+                releaseDate: "1996-05-15",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot08",
+                title: "The Path of Daggers",
+                releaseDate: "1998-10-20",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot09",
+                title: "Winter's Heart",
+                releaseDate: "2000-11-07",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot10",
+                title: "Crossroads of Twilight",
+                releaseDate: "2003-01-07",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wotNewSpring",
+                title: "New Spring",
+                releaseDate: "2004-01-06",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot11",
+                title: "Knife of Dreams",
+                releaseDate: "2005-10-11",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot12",
+                title: "The Gathering Storm",
+                releaseDate: "2009-10-27",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot13",
+                title: "Towers of Midnight",
+                releaseDate: "2010-11-02",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "wot14",
+                title: "A Memory of Light",
+                releaseDate: "2013-01-08",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            }
+        ]
+    },
+
+    {
+        id: "enderverse",
+        title: "Enderverse",
+        category: "read",
+        profiles: [
+            profiles.BRETT
+        ],
+        entries: [
+            {
+                id: "ender01",
+                title: "Ender's Game",
+                releaseDate: "1985",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "ender02",
+                title: "Speaker for the Dead",
+                releaseDate: "1986",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "ender03",
+                title: "Xenocide",
+                releaseDate: "1991",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "ender04",
+                title: "Children of the Mind",
+                releaseDate: "1996",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "shadow01",
+                title: "Ender's Shadow",
+                releaseDate: "1999",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "shadow02",
+                title: "Shadow of the Hegemon",
+                releaseDate: "2000",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "shadow03",
+                title: "Shadow Puppets",
+                releaseDate: "2002",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "shadow04",
+                title: "Shadow of the Giant",
+                releaseDate: "2005",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "ender05",
+                title: "Ender in Exile",
+                releaseDate: "2008",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "formic01",
+                title: "Earth Unaware",
+                releaseDate: "2012",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "formic02",
+                title: "Earth Afire",
+                releaseDate: "2013",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "formic03",
+                title: "Earth Awakens",
+                releaseDate: "2014",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "fleet01",
+                title: "The Swarm",
+                releaseDate: "2016",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "fleet02",
+                title: "The Hive",
+                releaseDate: "2019",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            },
+    
+            {
+                id: "fleet03",
+                title: "The Last Shadow",
+                releaseDate: "2021",
+                type: EntryType.BOOK,
+                status: Status.NOT_STARTED
+            }
+        ]
     }
 
 ];
