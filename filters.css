@@ -1,0 +1,92 @@
+.collectionFilters {
+    display: grid;
+    gap: 14px;
+    margin: 20px 0 12px;
+    padding: 16px;
+    background: #1b1b1b;
+    border: 1px solid #333;
+    border-radius: 14px;
+}
+
+.filterToggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 32px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.filterToggle input {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    accent-color: #2f6fed;
+}
+
+.filterGroup {
+    display: grid;
+    gap: 8px;
+}
+
+.filterLabel {
+    color: #aaa;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.filterSegmented {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    padding: 4px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 12px;
+}
+
+.filterChoice {
+    width: 100%;
+    margin: 0;
+    padding: 10px 8px;
+    background: transparent;
+    color: #aaa;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: none;
+    text-align: center;
+    font-size: 0.85rem;
+    transform: none;
+}
+
+.filterChoice:hover {
+    background: #252525;
+    color: white;
+    box-shadow: none;
+    transform: none;
+}
+
+.filterChoice.active {
+    background: #2f6fed;
+    color: white;
+}
+
+.filterResultCount {
+    margin: 0 0 12px;
+    color: #999;
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+@media (max-width: 480px) {
+    .collectionFilters {
+        padding: 14px;
+    }
+
+    .filterChoice {
+        font-size: 0.8rem;
+    }
+}
