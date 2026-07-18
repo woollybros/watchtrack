@@ -1,19 +1,19 @@
 const CHRONICLE_THEMES = {
     chronicle: {
         label: "Chronicle",
-        stylesheet: "style.css?v=1.3.0",
+        stylesheet: "style.css?v=1.3.1",
         usePolish: true,
         themeColor: "#0d0f14"
     },
     chaos: {
         label: "Chaos Arcade",
-        stylesheet: "style2.css?v=1.3.0",
+        stylesheet: "style2.css?v=1.3.1",
         usePolish: false,
         themeColor: "#fff7cf"
     },
     astral: {
         label: "Astral Archive",
-        stylesheet: "style3.css?v=1.3.0",
+        stylesheet: "style3.css?v=1.3.1",
         usePolish: false,
         themeColor: "#070812"
     }
@@ -27,43 +27,60 @@ function getSavedChronicleTheme() {
 }
 
 function applyChronicleTheme(themeName, save = true) {
-    const theme = CHRONICLE_THEMES[themeName] || CHRONICLE_THEMES.chronicle;
+    const resolvedName = CHRONICLE_THEMES[themeName] ? themeName : "chronicle";
+    const theme = CHRONICLE_THEMES[resolvedName];
     const themeStylesheet = document.getElementById("themeStylesheet");
     const polishStylesheet = document.getElementById("polishStylesheet");
     const themeColor = document.querySelector('meta[name="theme-color"]');
 
+    if (!themeStylesheet || !polishStylesheet) {
+        console.error("Chronicle theme stylesheets were not found.");
+        return;
+    }
+
     themeStylesheet.href = theme.stylesheet;
     polishStylesheet.disabled = !theme.usePolish;
-    document.documentElement.dataset.theme = themeName;
+    document.documentElement.dataset.theme = resolvedName;
 
     if (themeColor) {
         themeColor.content = theme.themeColor;
     }
 
     document.querySelectorAll("[data-theme-choice]").forEach(function (button) {
-        const isActive = button.dataset.themeChoice === themeName;
+        const isActive = button.dataset.themeChoice === resolvedName;
         button.classList.toggle("active", isActive);
         button.setAttribute("aria-pressed", String(isActive));
     });
 
+    const currentThemeLabel = document.getElementById("currentThemeLabel");
+    if (currentThemeLabel) {
+        currentThemeLabel.textContent = theme.label;
+    }
+
     if (save) {
-        localStorage.setItem(THEME_STORAGE_KEY, themeName);
+        localStorage.setItem(THEME_STORAGE_KEY, resolvedName);
     }
 }
 
 function buildThemeSwitcher() {
+    if (document.getElementById("themeSwitcher")) {
+        return;
+    }
+
     const switcher = document.createElement("aside");
+    switcher.id = "themeSwitcher";
     switcher.className = "themeSwitcher";
     switcher.setAttribute("aria-label", "Choose Chronicle theme");
 
     switcher.innerHTML = `
         <button type="button" class="themeSwitcherToggle" aria-expanded="false" aria-controls="themeSwitcherPanel">
-            <span aria-hidden="true">✦</span>
+            <span class="themeSwitcherIcon" aria-hidden="true">🎨</span>
             <span>Theme</span>
         </button>
 
         <div id="themeSwitcherPanel" class="themeSwitcherPanel" hidden>
             <div class="themeSwitcherHeading">Choose your Chronicle</div>
+            <div class="themeSwitcherCurrent">Current: <strong id="currentThemeLabel"></strong></div>
 
             ${Object.entries(CHRONICLE_THEMES).map(function ([key, theme]) {
                 const description = key === "chronicle"
@@ -90,7 +107,8 @@ function buildThemeSwitcher() {
     const toggle = switcher.querySelector(".themeSwitcherToggle");
     const panel = switcher.querySelector(".themeSwitcherPanel");
 
-    toggle.addEventListener("click", function () {
+    toggle.addEventListener("click", function (event) {
+        event.stopPropagation();
         const shouldOpen = panel.hidden;
         panel.hidden = !shouldOpen;
         toggle.setAttribute("aria-expanded", String(shouldOpen));
@@ -110,10 +128,17 @@ function buildThemeSwitcher() {
             toggle.setAttribute("aria-expanded", "false");
         }
     });
+
+    applyChronicleTheme(getSavedChronicleTheme(), false);
 }
 
-applyChronicleTheme(getSavedChronicleTheme(), false);
-window.addEventListener("DOMContentLoaded", function () {
-    buildThemeSwitcher();
+function initializeChronicleThemes() {
     applyChronicleTheme(getSavedChronicleTheme(), false);
-});
+    buildThemeSwitcher();
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeChronicleThemes, { once: true });
+} else {
+    initializeChronicleThemes();
+}
