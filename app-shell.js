@@ -1,4 +1,4 @@
-const CHRONICLE_APP_VERSION = "1.2.0";
+const CHRONICLE_APP_VERSION = "1.3.1";
 
 function decoratePageHeader() {
     const backButton = document.getElementById("backButton");
@@ -27,7 +27,8 @@ function getChronicleSaveData() {
     const allowedPrefixes = [
         "watchTrackProgress",
         "watchTrackActiveProfile",
-        "chronicleView-"
+        "chronicleView-",
+        "chronicleTheme"
     ];
 
     for (let index = 0; index < localStorage.length; index += 1) {
@@ -114,7 +115,8 @@ function importChronicleSave(file) {
                 if (
                     key.startsWith("watchTrackProgress") ||
                     key === "watchTrackActiveProfile" ||
-                    key.startsWith("chronicleView-")
+                    key.startsWith("chronicleView-") ||
+                    key === "chronicleTheme"
                 ) {
                     localStorage.setItem(key, value);
                 }
@@ -190,6 +192,10 @@ function addSaveSyncPanel() {
         });
 }
 
+function removeUpdateBanner() {
+    document.getElementById("appUpdateBanner")?.remove();
+}
+
 function showUpdateBanner(remoteVersion) {
     if (document.getElementById("appUpdateBanner")) {
         return;
@@ -204,6 +210,8 @@ function showUpdateBanner(remoteVersion) {
     `;
 
     banner.querySelector("button").addEventListener("click", function () {
+        sessionStorage.setItem("chronicleRequestedVersion", remoteVersion);
+
         const url = new URL(window.location.href);
         url.searchParams.set("appVersion", remoteVersion);
         url.searchParams.set("refresh", Date.now());
@@ -216,7 +224,8 @@ function showUpdateBanner(remoteVersion) {
 async function checkForChronicleUpdate() {
     try {
         const response = await fetch(`version.json?check=${Date.now()}`, {
-            cache: "no-store"
+            cache: "no-store",
+            headers: { "Cache-Control": "no-cache" }
         });
 
         if (!response.ok) {
@@ -224,10 +233,20 @@ async function checkForChronicleUpdate() {
         }
 
         const remote = await response.json();
+        const requestedVersion = sessionStorage.getItem("chronicleRequestedVersion");
 
-        if (remote.version && remote.version !== CHRONICLE_APP_VERSION) {
-            showUpdateBanner(remote.version);
+        if (!remote.version || remote.version === CHRONICLE_APP_VERSION) {
+            sessionStorage.removeItem("chronicleRequestedVersion");
+            removeUpdateBanner();
+            return;
         }
+
+        if (requestedVersion === remote.version) {
+            removeUpdateBanner();
+            return;
+        }
+
+        showUpdateBanner(remote.version);
     } catch (error) {
         console.debug("Chronicle update check skipped.", error);
     }
