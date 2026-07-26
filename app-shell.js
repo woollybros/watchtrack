@@ -1,4 +1,4 @@
-const CHRONICLE_APP_VERSION = "1.3.1";
+const CHRONICLE_APP_VERSION = "1.3.2";
 
 function decoratePageHeader() {
     const backButton = document.getElementById("backButton");
