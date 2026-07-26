@@ -236,6 +236,74 @@ body::after {
     font-size: .8rem;
 }
 
+.chapterTracker {
+    margin: 24px 0;
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 18px;
+    background: rgba(255,255,255,.035);
+}
+
+.chapterTrackerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.chapterTrackerHeader h3 {
+    margin: 0;
+}
+
+.chapterTrackerHeader span,
+.chapterSummary {
+    color: #9fa5b3;
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+.chapterTrackerHelp {
+    margin: 6px 0 14px;
+    color: #8d93a0;
+    font-size: .78rem;
+    text-align: left;
+}
+
+.chapterGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(42px, 1fr));
+    gap: 8px;
+}
+
+.chapterButton {
+    min-width: 0;
+    padding: 10px 6px;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 10px;
+    background: rgba(255,255,255,.04);
+    color: #d7d9df;
+    text-align: center;
+    box-shadow: none;
+    transform: none;
+}
+
+.chapterButton:hover,
+.chapterButton:active {
+    transform: none;
+}
+
+.chapterButton.read {
+    border-color: rgba(134,239,172,.45);
+    background: rgba(46,160,67,.24);
+    color: #c9f7d7;
+}
+
+.entryButton .chapterSummary {
+    display: block;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
 @media (max-width: 600px) {
     .stickyPageHeader {
         margin-left: -18px;
@@ -251,5 +319,9 @@ body::after {
 
     .saveSyncActions {
         grid-template-columns: 1fr;
+    }
+
+    .chapterGrid {
+        grid-template-columns: repeat(5, 1fr);
     }
 }
