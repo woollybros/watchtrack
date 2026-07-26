@@ -1,19 +1,19 @@
 const CHRONICLE_THEMES = {
     chronicle: {
         label: "Chronicle",
-        stylesheet: "style.css?v=1.3.1",
+        stylesheet: "style.css?v=1.3.2",
         usePolish: true,
         themeColor: "#0d0f14"
     },
     chaos: {
         label: "Chaos Arcade",
-        stylesheet: "style2.css?v=1.3.1",
+        stylesheet: "style2.css?v=1.3.2",
         usePolish: false,
         themeColor: "#fff7cf"
     },
     astral: {
         label: "Astral Archive",
-        stylesheet: "style3.css?v=1.3.1",
+        stylesheet: "style3.css?v=1.3.2",
         usePolish: false,
         themeColor: "#070812"
     }
