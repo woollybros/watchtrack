@@ -1,4 +1,3 @@
-
 let activeProfile = localStorage.getItem("watchTrackActiveProfile") || profiles.BRETT;
 
 let collectionScrollPosition = 0;
@@ -307,7 +306,6 @@ function showHomeScreen() {
         });
 }
 
-
 function showCategoryScreen(category) {
     const categoryTitle =
         category.charAt(0).toUpperCase() + category.slice(1);
@@ -329,27 +327,21 @@ function showCategoryScreen(category) {
                 isCollectionVisible(collection)
             );
         })
-
         .sort(function (a, b) {
-
             const progressA = getCollectionProgress(a);
             const progressB = getCollectionProgress(b);
-
             const completeA = progressA.percentage === 100;
             const completeB = progressB.percentage === 100;
 
-            // Completed collections always go to the bottom.
             if (completeA && !completeB) return 1;
             if (!completeA && completeB) return -1;
 
-            // Otherwise sort highest completion first.
             const diff = progressB.percentage - progressA.percentage;
 
             if (diff !== 0) {
                 return diff;
             }
 
-            // Same percentage? Sort alphabetically.
             return a.title.localeCompare(b.title);
         });
 
@@ -375,7 +367,8 @@ function showCategoryScreen(category) {
             <div class="collectionProgressText">
                 ${progress.completedEntries} / ${progress.totalEntries} completed
             </div>
-        `;        collectionButton.id = collection.id + "Button";
+        `;
+        collectionButton.id = collection.id + "Button";
 
         collectionButton.addEventListener("click", function () {
             collectionScrollPosition = 0;
@@ -391,7 +384,6 @@ function showCategoryScreen(category) {
         showHomeScreen();
     });
 }
-
 
 function getCollectionProgress(collection) {
     const displayEntries = getDisplayEntries(collection);
@@ -482,8 +474,11 @@ function showCollectionScreen(collection, category) {
 
     for (const displayEntry of displayEntries) {
         const entryButton = document.createElement("button");
+        const chapterSummary = displayEntry.chapterCount
+            ? ` <span class="chapterSummary">${(displayEntry.readChapters ?? []).length}/${displayEntry.chapterCount} chapters</span>`
+            : "";
 
-        entryButton.textContent = displayEntry.title;
+        entryButton.innerHTML = `<span>${displayEntry.title}</span>${chapterSummary}`;
 
         entryButton.classList.add("entryButton");
 
@@ -555,6 +550,9 @@ function showEntryScreen(entry, collection, category, season = null) {
     const episodesWatched =
         statusTarget.episodesWatched ?? 0;
 
+    const chapterCount = !season ? entry.chapterCount : undefined;
+    const readChapters = Array.isArray(entry.readChapters) ? entry.readChapters : [];
+
     setAppContent(`
         <button id="backButton">← Back</button>
 
@@ -573,6 +571,11 @@ function showEntryScreen(entry, collection, category, season = null) {
 
                 ${episodeCount !== undefined
                     ? `<span>${episodeCount} episodes</span>`
+                    : ""
+                }
+
+                ${chapterCount !== undefined
+                    ? `<span>${chapterCount} chapters</span>`
                     : ""
                 }
             </div>
@@ -595,6 +598,26 @@ function showEntryScreen(entry, collection, category, season = null) {
                         </div>
                     `
                     : ""
+            }
+
+            ${chapterCount !== undefined
+                ? `
+                    <div class="chapterTracker">
+                        <div class="chapterTrackerHeader">
+                            <h3>Chapters Read</h3>
+                            <span>${readChapters.length} / ${chapterCount}</span>
+                        </div>
+                        <p class="chapterTrackerHelp">Tap any chapter to mark it read or unread.</p>
+                        <div class="chapterGrid">
+                            ${Array.from({ length: chapterCount }, function (_, index) {
+                                const chapter = index + 1;
+                                const isRead = readChapters.includes(chapter);
+                                return `<button type="button" class="chapterButton ${isRead ? "read" : ""}" data-chapter="${chapter}" aria-pressed="${isRead}">${chapter}</button>`;
+                            }).join("")}
+                        </div>
+                    </div>
+                `
+                : ""
             }
 
             <h3>Status</h3>
@@ -655,10 +678,14 @@ function showEntryScreen(entry, collection, category, season = null) {
             statusTarget.status =
                 statusButton.dataset.status;
             
-                updateEpisodeProgress(
-                    statusTarget,
-                    episodeCount
-                );
+            updateEpisodeProgress(
+                statusTarget,
+                episodeCount
+            );
+
+            if (chapterCount !== undefined) {
+                updateChapterProgressFromStatus(entry);
+            }
 
             saveProgress();
 
@@ -721,6 +748,29 @@ function showEntryScreen(entry, collection, category, season = null) {
         });
     }
 
+    if (chapterCount !== undefined) {
+        document.querySelectorAll(".chapterButton").forEach(function (button) {
+            button.addEventListener("click", function () {
+                const chapter = Number(button.dataset.chapter);
+                const chapters = new Set(Array.isArray(entry.readChapters) ? entry.readChapters : []);
+
+                if (chapters.has(chapter)) {
+                    chapters.delete(chapter);
+                } else {
+                    chapters.add(chapter);
+                }
+
+                entry.readChapters = Array.from(chapters).sort(function (a, b) {
+                    return a - b;
+                });
+
+                updateChapterStatus(entry);
+                saveProgress();
+                showEntryScreen(entry, collection, category, season);
+            });
+        });
+    }
+
     const backButton =
         document.getElementById("backButton");
 
@@ -753,14 +803,13 @@ function updateEpisodeStatus(target, episodeCount) {
         target.status = Status.IN_PROGRESS;
     }
 }
-function updateEpisodeProgress(target, episodeCount) {
 
+function updateEpisodeProgress(target, episodeCount) {
     if (episodeCount === undefined) {
         return;
     }
 
     switch (target.status) {
-
         case Status.NOT_STARTED:
             target.episodesWatched = 0;
             break;
@@ -768,6 +817,35 @@ function updateEpisodeProgress(target, episodeCount) {
         case Status.COMPLETED:
             target.episodesWatched = episodeCount;
             break;
+    }
+}
+
+function updateChapterStatus(entry) {
+    const total = entry.chapterCount ?? 0;
+    const readCount = Array.isArray(entry.readChapters) ? entry.readChapters.length : 0;
+
+    if (readCount <= 0) {
+        entry.status = Status.NOT_STARTED;
+    } else if (total > 0 && readCount >= total) {
+        entry.status = Status.COMPLETED;
+    } else {
+        entry.status = Status.IN_PROGRESS;
+    }
+}
+
+function updateChapterProgressFromStatus(entry) {
+    const total = entry.chapterCount;
+
+    if (total === undefined) {
+        return;
+    }
+
+    if (entry.status === Status.NOT_STARTED) {
+        entry.readChapters = [];
+    } else if (entry.status === Status.COMPLETED) {
+        entry.readChapters = Array.from({ length: total }, function (_, index) {
+            return index + 1;
+        });
     }
 }
 
@@ -867,11 +945,8 @@ function switchProfile(profile) {
     );
 
     collections = structuredClone(defaultCollections);
-
     loadProgress();
-
     collectionScrollPosition = 0;
-
     showHomeScreen();
 }
 
@@ -892,7 +967,10 @@ function saveProgress() {
         for (const entry of collection.entries) {
             progressData[collection.id][entry.id] = {
                 status: entry.status,
-                episodesWatched: entry.episodesWatched
+                episodesWatched: entry.episodesWatched,
+                readChapters: Array.isArray(entry.readChapters)
+                    ? entry.readChapters
+                    : undefined
             };
 
             if (entry.seasons) {
@@ -946,6 +1024,20 @@ function loadProgress() {
 
             if (savedEntry.episodesWatched !== undefined) {
                 entry.episodesWatched = savedEntry.episodesWatched;
+            }
+
+            if (Array.isArray(savedEntry.readChapters) && entry.chapterCount !== undefined) {
+                entry.readChapters = savedEntry.readChapters
+                    .filter(function (chapter) {
+                        return Number.isInteger(chapter) && chapter >= 1 && chapter <= entry.chapterCount;
+                    })
+                    .filter(function (chapter, index, chapters) {
+                        return chapters.indexOf(chapter) === index;
+                    })
+                    .sort(function (a, b) {
+                        return a - b;
+                    });
+                updateChapterStatus(entry);
             }
 
             if (entry.seasons && savedEntry.seasons) {
